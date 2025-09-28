@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+
+  pets Pet[] // ← relação 1:N
+}
+
+model Pet {
+  id          Int         @id @default(autoincrement())
+  name        String
+  breed       String
+  color       String
+  size        String
+  sex         String
+  ageMonths   Int
+  weightKg    Float?
+  temperament String?
+  description String
+  // Se quiser manter uma capa gerada a partir das imagens, pode remover este campo:
+  imageUrl    String?     // opcional
+  vaccinated  Boolean?    @default(false)
+  neutered    Boolean?    @default(false)
+  dewormed    Boolean?    @default(false)
+
+  contactPhone String?
+
+  authorId    Int
+  author      User        @relation(fields: [authorId], references: [id])
+
+  images      PetImage[]  // 👈 relação 1-N
+
+  createdAt   DateTime    @default(now())
+}
+
+model PetImage {
+  id        Int    @id @default(autoincrement())
+  petId     Int
+  pet       Pet    @relation(fields: [petId], references: [id], onDelete: Cascade)
+
+  publicId  String // 👈 ex.: "cantinho-aumigo/pets/abCDef123"
+  position  Int    // 👈 1..4
+
+  // Constraints úteis
+  @@unique([petId, position])  // uma posição por pet
+  @@index([petId])
+}
