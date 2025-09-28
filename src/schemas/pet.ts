@@ -12,7 +12,6 @@ const enumField = <T extends readonly [string, ...string[]]>(
     { message }
   );
 
-// telefone BR/WA: mantém só dígitos e exige 10..13
 const phoneBr = z
   .string()
   .min(10, "Telefone obrigatório")
@@ -22,7 +21,6 @@ const phoneBr = z
     message: "Telefone inválido",
   });
 
-// helper pra lidar com "" -> undefined em campos numéricos opcionais
 const toOptionalNumber = (v: unknown) =>
   v === "" || v === null || v === undefined ? undefined : Number(v);
 
@@ -31,7 +29,6 @@ export const createPetSchema = z.object({
   breed: z.string().min(2, "Raça obrigatória"),
   color: z.string().min(2, "Cor obrigatória"),
 
-  // ✅ enum com mensagens personalizadas
   size: enumField(petSizes, "Selecione o porte"),
   sex: enumField(petSexes, "Selecione o sexo"),
 
@@ -45,14 +42,12 @@ export const createPetSchema = z.object({
     .string()
     .min(10, "Conte a história/descrição com pelo menos 10 caracteres"),
 
-  // capa (opcional, pode vir como vazio)
   imageUrl: z
     .string()
     .url("Informe uma URL válida de imagem")
     .or(z.literal("").transform(() => undefined))
     .optional(),
 
-  // galeria (até 4 publicIds do Cloudinary)
   imagePublicIds: z
     .array(z.string().min(1, "ID da imagem inválido"))
     .max(4, "Máximo de 4 imagens")
@@ -68,7 +63,6 @@ export const createPetSchema = z.object({
     .optional()
     .transform((v) => (v?.trim() ? v : undefined)),
 
-  // 👇 novo: telefone obrigatório por post (normalizado)
   contactPhone: phoneBr,
 });
 

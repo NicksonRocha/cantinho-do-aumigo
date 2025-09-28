@@ -1,8 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
   provider = "prisma-client-js"
@@ -20,7 +15,7 @@ model User {
   password  String
   createdAt DateTime @default(now())
 
-  pets Pet[] // ← relação 1:N
+  pets Pet[] 
 }
 
 model Pet {
@@ -34,8 +29,8 @@ model Pet {
   weightKg    Float?
   temperament String?
   description String
-  // Se quiser manter uma capa gerada a partir das imagens, pode remover este campo:
-  imageUrl    String?     // opcional
+
+  imageUrl    String?    
   vaccinated  Boolean?    @default(false)
   neutered    Boolean?    @default(false)
   dewormed    Boolean?    @default(false)
@@ -45,7 +40,7 @@ model Pet {
   authorId    Int
   author      User        @relation(fields: [authorId], references: [id])
 
-  images      PetImage[]  // 👈 relação 1-N
+  images      PetImage[]  
 
   createdAt   DateTime    @default(now())
 }
@@ -55,10 +50,9 @@ model PetImage {
   petId     Int
   pet       Pet    @relation(fields: [petId], references: [id], onDelete: Cascade)
 
-  publicId  String // 👈 ex.: "cantinho-aumigo/pets/abCDef123"
-  position  Int    // 👈 1..4
+  publicId  String 
+  position  Int    
 
-  // Constraints úteis
-  @@unique([petId, position])  // uma posição por pet
+  @@unique([petId, position])  
   @@index([petId])
 }

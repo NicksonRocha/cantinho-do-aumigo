@@ -1,4 +1,4 @@
-// app/adopt/new/page.tsx (ou conforme o seu caminho atual)
+
 "use client";
 import { useFormState } from "react-dom";
 import { createPet, type CreatePetState } from "./action";
@@ -90,14 +90,13 @@ export default function NewAdoptionPostPage() {
         )}
 
         <form action={handleSubmit} className="space-y-5">
-          {/* Nome */}
+
           <div>
             <label htmlFor="name" className="block text-sm mb-1">Nome do pet</label>
             <input id="name" name="name" type="text" className="w-full border rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-highlight" placeholder="Ex.: Thor" required />
             {fe.name?.length ? <p className="text-sm text-red-600 mt-1">{fe.name[0]}</p> : null}
           </div>
 
-          {/* 👇 Telefone de contato do post (obrigatório) */}
           <div>
             <label htmlFor="contactPhone" className="block text-sm mb-1">
               WhatsApp para contato (obrigatório)
@@ -120,21 +119,18 @@ export default function NewAdoptionPostPage() {
             )}
           </div>
 
-          {/* Peso */}
           <div>
             <label htmlFor="weightKg" className="block text-sm mb-1">Peso (kg)</label>
             <input id="weightKg" name="weightKg" type="number" step="0.1" min={0} className="w-full border rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-highlight" placeholder="Ex.: 8.5" />
             {fe.weightKg?.length ? <p className="text-sm text-red-600 mt-1">{fe.weightKg[0]}</p> : null}
           </div>
 
-          {/* Raça */}
           <div>
             <label htmlFor="breed" className="block text-sm mb-1">Raça</label>
             <input id="breed" name="breed" type="text" className="w-full border rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-highlight" placeholder="Ex.: SRD, Poodle, Labrador…" required />
             {fe.breed?.length ? <p className="text-sm text-red-600 mt-1">{fe.breed[0]}</p> : null}
           </div>
 
-          {/* Porte */}
           <div>
             <label htmlFor="size" className="block text-sm mb-1">Porte</label>
             <select id="size" name="size" className="w-full border rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-highlight bg-white" required defaultValue="">
@@ -148,14 +144,12 @@ export default function NewAdoptionPostPage() {
             {fe.size?.length ? <p className="text-sm text-red-600 mt-1">{fe.size[0]}</p> : null}
           </div>
 
-          {/* Cor */}
           <div>
             <label htmlFor="color" className="block text-sm mb-1">Cor</label>
             <input id="color" name="color" type="text" className="w-full border rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-highlight" placeholder="Ex.: Caramelo, Branco e preto…" required />
             {fe.color?.length ? <p className="text-sm text-red-600 mt-1">{fe.color[0]}</p> : null}
           </div>
 
-          {/* Sexo */}
           <div>
             <span className="block text-sm mb-1">Sexo</span>
             <div className="flex gap-4">
@@ -169,21 +163,18 @@ export default function NewAdoptionPostPage() {
             {fe.sex?.length ? <p className="text-sm text-red-600 mt-1">{fe.sex[0]}</p> : null}
           </div>
 
-          {/* Idade em meses */}
           <div>
             <label htmlFor="ageMonths" className="block text-sm mb-1">Idade (em meses)</label>
             <input id="ageMonths" name="ageMonths" type="number" min={0} className="w-full border rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-highlight" placeholder="Ex.: 10" required />
             {fe.ageMonths?.length ? <p className="text-sm text-red-600 mt-1">{fe.ageMonths[0]}</p> : null}
           </div>
 
-          {/* Temperamento */}
           <div>
             <label htmlFor="temperament" className="block text-sm mb-1">Temperamento</label>
             <input id="temperament" name="temperament" type="text" className="w-full border rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-highlight" placeholder="Ex.: dócil, brincalhão, calmo…" />
             {fe.temperament?.length ? <p className="text-sm text-red-600 mt-1">{fe.temperament[0]}</p> : null}
           </div>
 
-          {/* Flags */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <label className="flex items-center gap-2">
               <input type="checkbox" name="vaccinated" /> Vacinado
@@ -196,14 +187,12 @@ export default function NewAdoptionPostPage() {
             </label>
           </div>
 
-          {/* Descrição */}
           <div>
             <label htmlFor="description" className="block text-sm mb-1">Descrição / História</label>
             <textarea id="description" name="description" className="w-full border rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-highlight min-h-28" placeholder="Conte um pouco sobre o pet…" required />
             {fe.description?.length ? <p className="text-sm text-red-600 mt-1">{fe.description[0]}</p> : null}
           </div>
 
-          {/* Upload */}
           <div>
             <label className="block text-sm mb-1">Fotos do pet (até 4)</label>
             <input type="file" accept="image/*" multiple onChange={handleImageChange} className="w-full border rounded-md px-3 py-2" />

@@ -13,7 +13,7 @@ export default function CadastroPage() {
   const [submitting, setSubmitting] = useState(false);
 
   async function handleSubmit(formData: FormData) {
-    // 1) Validação no cliente com Zod
+
     const parsed = cadastroSchema.safeParse({
       name: String(formData.get("name") ?? ""),
       email: String(formData.get("email") ?? ""),
@@ -23,17 +23,14 @@ export default function CadastroPage() {
 
     if (!parsed.success) {
       setClientErrors(parsed.error.flatten().fieldErrors);
-      return; // bloqueia envio ao servidor
+      return;
     }
 
     setClientErrors({});
     setSubmitting(true);
 
     try {
-      // 2) Se passou no cliente, envia para a Server Action
       await formAction(formData);
-      // Obs.: se o servidor redirecionar, a página muda.
-      // Se ele retornar erros, `state` será atualizado.
     } finally {
       setSubmitting(false);
     }

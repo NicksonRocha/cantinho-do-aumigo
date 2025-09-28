@@ -1,4 +1,4 @@
-// src/actions/getPetById.ts
+
 "use server";
 
 import prisma from "../../lib/prisma";
@@ -12,7 +12,9 @@ function cUrl(publicId: string): string {
   return `https://res.cloudinary.com/${CLOUD}/image/upload/${pid}`;
 }
 
-export async function getPetById(id: number): Promise<PetDetail | null> {
+export async function getPetById(
+  id: number
+): Promise<(PetDetail & { authorId: number }) | null> {
   const pet = await prisma.pet.findUnique({
     where: { id },
     include: {
@@ -40,5 +42,6 @@ export async function getPetById(id: number): Promise<PetDetail | null> {
     description: pet.description ?? null,
     images: imgs,
     contactPhone: pet.contactPhone ?? null,
+    authorId: Number(pet.authorId), 
   };
 }

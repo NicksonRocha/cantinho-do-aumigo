@@ -5,7 +5,7 @@ export const runtime = "nodejs";
 export async function POST(req: Request) {
   try {
     const form = await req.formData();
-    const files = form.getAll("file") as File[]; // 👈 permite múltiplos
+    const files = form.getAll("file") as File[]; 
     if (!files.length) {
       return Response.json({ error: "Arquivo não enviado" }, { status: 400 });
     }
@@ -30,7 +30,6 @@ export async function POST(req: Request) {
       })
     );
 
-    // Compat: se veio 1 só, devolve também as props planas
     if (uploads.length === 1) {
       return Response.json(uploads[0], { status: 200 });
     }

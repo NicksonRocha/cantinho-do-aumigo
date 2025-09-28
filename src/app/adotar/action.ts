@@ -1,4 +1,4 @@
-// app/adopt/new/action.ts
+
 "use server";
 
 import { ZodError } from "zod";
@@ -43,7 +43,6 @@ export async function createPet(
       neutered: formData.get("neutered") === "on",
       dewormed: formData.get("dewormed") === "on",
       temperament: String(formData.get("temperament") ?? ""),
-      // 👇 novo
       contactPhone: String(formData.get("contactPhone") ?? ""),
     };
 
@@ -65,7 +64,7 @@ export async function createPet(
           neutered: !!parsed.neutered,
           dewormed: !!parsed.dewormed,
           temperament: parsed.temperament,
-          contactPhone: parsed.contactPhone, // 👈 salvar já normalizado (só dígitos)
+          contactPhone: parsed.contactPhone, 
           authorId: userId,
         },
       });

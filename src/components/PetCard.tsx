@@ -22,7 +22,7 @@ export default function PetCard({ pet, ratio = "4:5" }: Props) {
   return (
     <article className="w-full bg-white rounded-2xl shadow-sm border border-accent hover:shadow-md transition overflow-hidden">
       <div className="flex gap-0 md:gap-4">
-        {/* IMAGEM (esquerda) */}
+       
         <div className={`relative shrink-0 w-[180px] md:w-[240px] ${aspectClass} bg-[var(--color-neutral)]`}>
           {pet.imageUrl ? (
             <Image
@@ -40,9 +40,12 @@ export default function PetCard({ pet, ratio = "4:5" }: Props) {
           )}
         </div>
 
-        {/* TEXTO (direita) */}
         <div className="flex-1 p-4 md:p-5">
-          <h3 className="text-xl font-semibold text-[var(--color-secondary)]">{pet.name}</h3>
+          <Link
+            href={`/pets/${pet.id}`}
+            className="text-xl font-semibold text-[var(--color-secondary)]">
+            {pet.name}
+          </Link>
           <p className="text-sm text-[color:rgba(0,0,0,.55)]">Raça: {pet.breed}</p>
           <p className="text-sm text-[color:rgba(0,0,0,.55)] mb-2">Idade: {formatAge(pet.ageMonths)}</p>
 

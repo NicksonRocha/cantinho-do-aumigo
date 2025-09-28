@@ -1,4 +1,4 @@
-// app/api/my-pets/route.ts
+
 import { NextResponse } from "next/server";
 import { auth } from "../../../../auth";
 import prisma from "../../../../lib/prisma";
@@ -11,7 +11,7 @@ export async function GET(req: Request) {
   }
 
   const url = new URL(req.url);
-  const authorId = Number(idFromSession); // troque para userId se seu modelo usar esse nome
+  const authorId = Number(idFromSession);
 
   const breed = url.searchParams.getAll("breed");
   const size = url.searchParams.getAll("size");

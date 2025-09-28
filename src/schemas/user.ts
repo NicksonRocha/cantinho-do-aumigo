@@ -15,6 +15,5 @@ export const loginSchema = z.object({
   password: z.string().min(1, "Informe sua senha."),
 });
 
-// Tipos derivados
 export type CadastroInput = z.infer<typeof cadastroSchema>;
 export type LoginInput = z.infer<typeof loginSchema>;

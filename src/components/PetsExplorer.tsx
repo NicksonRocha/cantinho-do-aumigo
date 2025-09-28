@@ -1,4 +1,4 @@
-// src/components/PetsExplorer.tsx
+
 "use client";
 
 import { useEffect, useMemo, useState } from "react";

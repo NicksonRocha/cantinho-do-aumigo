@@ -1,4 +1,4 @@
-// src/types/pet.ts
+
 export type PetFilters = {
   breed: string[];
   size: string[];
@@ -32,6 +32,7 @@ export type PetDetail = {
   weightKg?: number | null;
   temperament?: string | null;
   description?: string | null;
-  images: string[]; // todas as imagens do pet
+  images: string[]; 
   contactPhone: string | null;
+  authorId: number; 
 };

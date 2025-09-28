@@ -19,7 +19,7 @@ export default function EntrarPage() {
     clientErrors?.[field]?.[0] ?? state.fieldErrors?.[field]?.[0];
 
   async function handleSubmit(formData: FormData) {
-    // Validação no cliente (mesmo schema que no server)
+
     const parsed = loginSchema.safeParse({
       email: String(formData.get("email") ?? ""),
       password: String(formData.get("password") ?? ""),

@@ -41,9 +41,9 @@ export default function PetGalleryCarousel({ images, alt }: Props) {
   }
 
   return (
-    // Wrapper relativo para ancorar setas
+
     <div className="relative w-full">
-      {/* faixa principal (rolável) */}
+
       <div
   ref={trackRef}
   className="relative mx-auto w-full max-w-[320px] aspect-[4/5] overflow-x-auto no-scrollbar snap-x snap-mandatory flex rounded-xl border"
@@ -63,7 +63,6 @@ export default function PetGalleryCarousel({ images, alt }: Props) {
         ))}
       </div>
 
-      {/* setas FIXAS (fora do container rolável) */}
       {images.length > 1 && (
         <>
           <button
@@ -85,7 +84,6 @@ export default function PetGalleryCarousel({ images, alt }: Props) {
         </>
       )}
 
-      {/* indicadores */}
       {images.length > 1 && (
         <div className="mt-2 flex items-center justify-center gap-2">
           {images.map((_, i) => (
@@ -102,7 +100,6 @@ export default function PetGalleryCarousel({ images, alt }: Props) {
         </div>
       )}
 
-      {/* thumbs */}
       {images.length > 1 && (
         <div className="mt-3 hidden md:flex justify-center gap-2">
           {images.map((src, i) => (

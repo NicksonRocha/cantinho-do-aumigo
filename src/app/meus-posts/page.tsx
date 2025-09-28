@@ -1,4 +1,4 @@
-// app/meus-posts/page.tsx
+
 import { redirect } from "next/navigation";
 import { auth } from "../../../auth";
 import PetCard from "@/components/PetCard";
@@ -12,7 +12,6 @@ export default async function MeusPostsPage() {
   const session = await auth();
 
   if (!session) {
-    // manda para login e volta pra /meus-posts após logar
     redirect(`/login?callbackUrl=${encodeURIComponent("/meus-posts")}`);
   }
 
@@ -26,10 +25,6 @@ export default async function MeusPostsPage() {
             Meus posts
           </h1>
 
-          {/* opcional: link para criar novo post */}
-          {/* <Link href="/adopt/new" className="px-3 py-2 rounded-lg bg-highlight text-neutral hover:opacity-90">
-            Novo post
-          </Link> */}
         </header>
 
         {pets.length === 0 ? (

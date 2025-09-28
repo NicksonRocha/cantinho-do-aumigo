@@ -18,11 +18,9 @@ export async function getMyPets(): Promise<MyPet[]> {
   const idFromSession = session?.user?.id;
 
   if (!idFromSession) {
-    // Sem sessão, sem dados
     return [];
   }
 
-  // Se no DB o userId é number, garanta o cast:
   const authorId = Number(idFromSession);
 
   return prisma.pet.findMany({

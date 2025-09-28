@@ -51,7 +51,6 @@ export default function PetFilters({ onChange }: Props) {
     <aside className="w-64 p-4 space-y-5 bg-white rounded-xl shadow-sm border border-accent">
       <h3 className="text-base font-semibold text-[var(--color-secondary)]">Filtros</h3>
 
-      {/* Raça */}
       <div>
         <p className="text-sm font-semibold mb-1 text-accent">Raça</p>
         <div className="flex flex-wrap gap-2">
@@ -85,7 +84,6 @@ export default function PetFilters({ onChange }: Props) {
         </div>
       </div>
 
-      {/* Porte */}
       <div>
         <p className="text-sm font-semibold mb-1 text-accent">Porte</p>
         <div className="flex flex-wrap gap-2">
@@ -119,7 +117,6 @@ export default function PetFilters({ onChange }: Props) {
         </div>
       </div>
 
-      {/* Sexo */}
       <div>
         <p className="text-sm font-semibold mb-1 text-accent">Sexo</p>
         <div className="flex flex-wrap gap-2">
@@ -153,7 +150,6 @@ export default function PetFilters({ onChange }: Props) {
         </div>
       </div>
 
-      {/* Temperamento */}
       <div>
         <p className="text-sm font-semibold mb-1 text-accent">Temperamento</p>
         <div className="flex flex-wrap gap-2">
@@ -187,7 +183,6 @@ export default function PetFilters({ onChange }: Props) {
         </div>
       </div>
 
-      {/* Idade */}
       <div>
         <p className="text-sm font-semibold mb-1 text-accent">Idade</p>
         <div className="flex flex-col gap-1 text-sm">
